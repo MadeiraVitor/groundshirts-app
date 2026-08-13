@@ -1,1 +1,92 @@
 @import "tailwindcss";
+
+@theme {
+  /* Cores */
+  --color-primary-fixed-dim: #bbce91;
+  --color-surface-container-lowest: #ffffff;
+  --color-outline-variant: #c6c8b9;
+  --color-error: #ba1a1a;
+  --color-on-secondary-fixed-variant: #61401b;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-inverse-surface: #313030;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-container: #f0eded;
+  --color-inverse-primary: #bbce91;
+  --color-on-tertiary-container: #cececc;
+  --color-secondary-container: #fdcb9b;
+  --color-on-primary-fixed: #141f00;
+  --color-background: #fcf9f8;
+  --color-primary-fixed: #d7eaab;
+  --color-secondary-fixed-dim: #eebd8e;
+  --color-surface-container-low: #f6f3f2;
+  --color-on-tertiary-fixed: #1a1c1b;
+  --color-secondary-fixed: #ffdcbd;
+  --color-on-secondary-fixed: #2c1600;
+  --color-surface: #fcf9f8;
+  --color-on-surface: #1c1b1b;
+  --color-tertiary: #3f4140;
+  --color-on-primary-fixed-variant: #3d4c1d;
+  --color-tertiary-container: #565857;
+  --color-on-error: #ffffff;
+  --color-surface-bright: #fcf9f8;
+  --color-on-secondary: #ffffff;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-container-high: #eae7e7;
+  --color-on-primary-container: #c2d598;
+  --color-secondary: #7c5730;
+  --color-on-tertiary: #ffffff;
+  --color-surface-variant: #e5e2e1;
+  --color-outline: #76786c;
+  --color-error-container: #ffdad6;
+  --color-on-surface-variant: #45483d;
+  --color-primary: #364517;
+  --color-primary-container: #4d5d2c;
+  --color-on-tertiary-fixed-variant: #454746;
+  --color-on-primary: #ffffff;
+
+  /* Fontes */
+  --font-headline-lg-mobile: "Hanken Grotesk", sans-serif;
+  --font-headline-xl: "Hanken Grotesk", sans-serif;
+  --font-headline-lg: "Hanken Grotesk", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-label-sm: "Geist", sans-serif;
+
+  /* Border radius */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Espaçamentos */
+  --spacing-margin-desktop: 64px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1440px;
+  --spacing-base: 8px;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   Componentes personalizados
+   ========================= */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.image-hover-zoom {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.group:hover .image-hover-zoom {
+  transform: scale(1.05);
+}
