@@ -2,7 +2,7 @@ import Banner from "../../assets/images/banner.png";
 
 export const Hero = () => {
   return (
-    <section className="relative h-128 rounded-2xl mb-24 mt-27 max-w-327.5 mx-auto md:h-160">
+    <section className="relative h-128 rounded-2xl mt-27 md:px-margin-desktop max-w-container-max mx-auto md:h-160">
       <img
         className="w-full h-full object-cover rounded-2xl"
         src={Banner}
