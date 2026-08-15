@@ -8,7 +8,7 @@ export const Header = () => {
         <h1 className="font-headline-lg text-headline-lg font-black tracking-tighter text-on-surface">
           GROUNDSHIRTS
         </h1>
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden lg:flex space-x-8">
           <a
             className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:opacity-70 duration-300"
             href="#"
