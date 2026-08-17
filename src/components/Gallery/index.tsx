@@ -5,7 +5,7 @@ import { FiTruck } from "react-icons/fi";
 
 export const Gallery = () => {
   return (
-    <section className="pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-24">
+    <section className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-24">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter h-200">
         {/* <!-- Large Left Banner --> */}
         <div className="md:col-span-7 relative rounded-2xl overflow-hidden group">
