@@ -4,7 +4,7 @@ export const Hero = () => {
   return (
     <section className="relative h-128 rounded-2xl mt-27 md:px-margin-desktop max-w-container-max mx-auto md:h-160">
       <img
-        className="w-full h-full object-cover rounded-2xl"
+        className="w-full h-full object-cover md:rounded-2xl"
         src={Banner}
         alt="Banner"
       />
