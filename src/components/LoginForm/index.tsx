@@ -5,9 +5,8 @@ import { FaArrowRightLong } from "react-icons/fa6";
 export const LoginForm = () => {
   return (
     <section className="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
-      {/* <!-- SUPPRESSED TOPNAVBAR - Transactional Page Intent --> */}
       <main className="grow relative flex items-center justify-center py-20 px-4 md:px-margin-desktop min-h-screen">
-        {/* <!-- Background Image --> */}
+      
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             alt=""
@@ -16,7 +15,7 @@ export const LoginForm = () => {
           />
           <div className="absolute inset-0 bg-background/50 backdrop-blur-sm"></div>
         </div>
-        {/* <!-- Login Container --> */}
+    
         <div className="relative z-10 w-full max-w-md mx-auto">
           <div className="glass-panel p-8 md:p-12 shadow-[0px_10px_30px_rgba(0,0,0,0.08)]">
             <header className="text-center mb-10">
@@ -84,7 +83,6 @@ export const LoginForm = () => {
           </div>
         </div>
       </main>
-      {/* <!-- SUPPRESSED FOOTER - Transactional Page Intent --> */}
     </section>
   );
 };

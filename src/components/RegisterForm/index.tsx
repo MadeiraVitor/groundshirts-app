@@ -8,7 +8,6 @@ export const RegisterForm = () => {
 
   return (
     <section className="min-h-screen relative flex items-center justify-center p-4">
-      {/* <!-- Background Layer --> */}
       <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
         <img
           className="w-full h-full bg-cover bg-center scale-105"
@@ -17,7 +16,7 @@ export const RegisterForm = () => {
         />
         <div className="absolute inset-0 bg-background/50 backdrop-blur-sm"></div>
       </div>
-      {/* <!-- Registration Canvas --> */}
+    
       <main className="relative z-10 w-full max-w-115 bg-surface-container-lowest/85 backdrop-blur-2xl border border-outline-variant/30 rounded-xl shadow-lg p-8 md:p-12 flex flex-col gap-8">
         <header className="text-center flex flex-col gap-2">
           <Link to="/">
