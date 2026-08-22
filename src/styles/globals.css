@@ -118,3 +118,11 @@ body {
 .group:hover .image-hover-zoom {
   transform: scale(1.05);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
