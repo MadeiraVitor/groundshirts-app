@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { FaRegUser } from "react-icons/fa";
-import { MdOutlineShoppingBag } from "react-icons/md";
+import { ShoppingCart } from "../ShoppingCart";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+    <header className="fixed top-0 w-full z-50 bg-white/80 border-b border-outline-variant/30 shadow-sm">
       <div className="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <Link to="/">
           <h1 className="font-headline-lg text-headline-lg font-black tracking-tighter text-on-surface">
@@ -50,11 +50,8 @@ export const Header = () => {
               <FaRegUser />
             </span>
           </button>
-          <button className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer">
-            <span className="text-xl">
-              <MdOutlineShoppingBag />
-            </span>
-          </button>
+          
+          <ShoppingCart />
         </div>
       </div>
     </header>
