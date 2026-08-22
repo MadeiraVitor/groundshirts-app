@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ProductList } from "../../../components/ProductList";
 import { products } from "../../../mocks/products";
+import bannerProducts from "../../../assets/images/banner-products.jpg";
 
 export const Route = createFileRoute("/_app/products/")({
   component: RouteComponent,
@@ -13,8 +14,7 @@ function RouteComponent() {
         <div
           className="absolute inset-0 bg-surface-container-low"
           style={{
-            backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBiAQaSBd05VaHu7qSDWV4PZ53sKrK_uUnUe7dkNdUHxsmRlNgZw5KuLHqFA1XdgAetpS6wdHMFvbCcjNMgTEm2_K9zNLXOWTDpl4fola1K3jWWpdJW2pa-DF380TcdoLp-DTwD4AJ2Li9-FD9tA3FyDCiS3KMePiO8bSlRzAXKahBIKGWL9tAkuBkuHLV7uO_LbXbfMH7tvakLXWPT1g1OYK0hn-UxpvQsLI3hipWqfYe0GqUbvhtf')",
+            backgroundImage: `url('${bannerProducts}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
