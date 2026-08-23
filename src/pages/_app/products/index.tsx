@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_app/products/")({
 
 function RouteComponent() {
   return (
-    <div className="max-w-container-max mx-auto pt-10 px-1.25 md:px-margin-desktop">
+    <div className="max-w-container-max mx-auto pt-20 px-1.25 md:px-margin-desktop">
       <section className="relative w-full h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden mb-12">
         <div
           className="absolute inset-0 bg-surface-container-low"
