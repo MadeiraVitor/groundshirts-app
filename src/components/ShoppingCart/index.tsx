@@ -1,99 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
-
-import StreetOversizedBold from "../../assets/images/street-oversized-bold.png";
-import StreetBasicEco from "../../assets/images/street-basic-eco.png";
-import StreetFleece from "../../assets/images/street-fleece.png";
-import StreetRegataSlip from "../../assets/images/street-regata-slip.png";
-import StreetImpermeavelTech from "../../assets/images/street-impermeavel-tech.png";
 import { formatCurrency } from "../../utils/format-currency";
-
-const productsInCart = [
-  {
-    id: 1,
-    name: "Produto 1",
-    color: "Preto",
-    image: StreetOversizedBold,
-    price: 35,
-    quantity: 5,
-  },
-  {
-    id: 2,
-    name: "Produto 2",
-    color: "Marrom",
-    image: StreetBasicEco,
-    price: 75,
-    quantity: 2,
-  },
-  {
-    id: 3,
-    name: "Produto 3",
-    color: "Bodô",
-    image: StreetFleece,
-    price: 85,
-    quantity: 4,
-  },
-  {
-    id: 4,
-    name: "Produto 4",
-    color: "Cinza",
-    image: StreetRegataSlip,
-    price: 135,
-    quantity: 6,
-  },
-  {
-    id: 5,
-    name: "Produto 5",
-    color: "Preto",
-    image: StreetImpermeavelTech,
-    price: 15,
-    quantity: 2,
-  },
-  {
-    id: 1,
-    name: "Produto 1",
-    color: "Preto",
-    image: StreetOversizedBold,
-    price: 35,
-    quantity: 5,
-  },
-  {
-    id: 2,
-    name: "Produto 2",
-    color: "Marrom",
-    image: StreetBasicEco,
-    price: 75,
-    quantity: 2,
-  },
-  {
-    id: 3,
-    name: "Produto 3",
-    color: "Bodô",
-    image: StreetFleece,
-    price: 85,
-    quantity: 4,
-  },
-  {
-    id: 4,
-    name: "Produto 4",
-    color: "Cinza",
-    image: StreetRegataSlip,
-    price: 135,
-    quantity: 6,
-  },
-  {
-    id: 5,
-    name: "Produto 5",
-    color: "Preto",
-    image: StreetImpermeavelTech,
-    price: 15,
-    quantity: 2,
-  },
-];
+import { CartContext } from "../../contexts/CartContext";
 
 export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+  const { cart, removeItemFromCart, increment, decrement } =
+    useContext(CartContext);
 
   return (
     <>
@@ -120,17 +34,22 @@ export const ShoppingCart = () => {
                   CARRINHO
                 </h2>
                 <span className="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-4 py-0.5 rounded-full">
-                  {productsInCart.length}
+                  {cart.length}
                 </span>
               </div>
-              <button className="hover:opacity-70 transition-opacity cursor-pointer" onClick={() => setCartIsOpen(!cartIsOpen)}>X</button>
+              <button
+                className="hover:opacity-70 transition-opacity cursor-pointer"
+                onClick={() => setCartIsOpen(!cartIsOpen)}
+              >
+                X
+              </button>
             </header>
             {/* <!-- Cart Items --> */}
 
             <ul className="overflow-y-auto scrollbar-hide">
-              {productsInCart.map((product) => (
+              {cart.map((product) => (
                 <li key={product.id}>
-                  <div className="grow overflow-y-auto p-6 space-y-6">
+                  <div className="grow overflow-y-auto p-4 space-y-6">
                     <div className="flex space-x-4">
                       <div className="w-24 h-32 bg-surface-container-low rounded-lg overflow-hidden shrink-0">
                         <img
@@ -144,7 +63,10 @@ export const ShoppingCart = () => {
                           <h3 className="font-body-lg font-bold text-on-surface leading-tight">
                             {product.name}
                           </h3>
-                          <button className="text-on-surface-variant hover:text-error transition-colors cursor-pointer">
+                          <button
+                            className="text-on-surface-variant hover:text-error transition-colors cursor-pointer"
+                            onClick={() => removeItemFromCart(product.id)}
+                          >
                             <FaRegTrashAlt />
                           </button>
                         </div>
@@ -153,17 +75,23 @@ export const ShoppingCart = () => {
                         </p>
                         <div className="mt-auto flex justify-between items-center">
                           <div className="flex items-center border border-outline-variant rounded-full px-3 py-1 space-x-4">
-                            <button className="text-on-surface-variant hover:text-primary cursor-pointer">
+                            <button
+                              className="text-on-surface-variant hover:text-primary cursor-pointer"
+                              onClick={() => decrement(product)}
+                            >
                               -
                             </button>
                             <span className="font-label-sm">
                               {product.quantity}
                             </span>
-                            <button className="text-on-surface-variant hover:text-primary cursor-pointer">
+                            <button
+                              className="text-on-surface-variant hover:text-primary cursor-pointer"
+                              onClick={() => increment(product)}
+                            >
                               +
                             </button>
                           </div>
-                          <span className="font-body-lg font-bold text-primary">
+                          <span className="font-body-lg font-bold text-primary ml-1.5">
                             {formatCurrency(product.price)}
                           </span>
                         </div>
@@ -176,7 +104,6 @@ export const ShoppingCart = () => {
 
             {/* <!-- Summary Section --> */}
             <footer className="p-6 bg-surface-container-low border-t border-outline-variant space-y-4">
-              
               <div className="relative">
                 <input
                   className="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-label-sm uppercase tracking-widest focus:ring-1 focus:ring-primary focus:border-primary outline-none"
@@ -187,7 +114,10 @@ export const ShoppingCart = () => {
               <button className="w-full bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest py-4 rounded-full hover:opacity-90 transition-all active:scale-[0.98] shadow-lg cursor-pointer">
                 FINALIZAR COMPRA
               </button>
-              <button className="w-full text-center font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest cursor-pointer" onClick={() => setCartIsOpen(!cartIsOpen)}>
+              <button
+                className="w-full text-center font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest cursor-pointer"
+                onClick={() => setCartIsOpen(!cartIsOpen)}
+              >
                 Continuar Comprando
               </button>
             </footer>
