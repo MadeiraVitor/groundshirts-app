@@ -1,12 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "../../interfaces/product";
 import { MdAddShoppingCart } from "react-icons/md";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext } from "react";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard = ({product}: ProductCardProps) => {
+
+  const { addProductIntoCart } = useContext(CartContext);
+
   return (
     <div className="rounded-2xl bg-surface-container">
       <Link to="/products/$productId" params={{ productId: String(product.id) }}>
@@ -25,7 +30,7 @@ export const ProductCard = ({product}: ProductCardProps) => {
         <div className="flex justify-between mt-2.5">
           <p className="font-bold">R${product.price},00</p>
 
-          <button className="cursor-pointer">
+          <button className="cursor-pointer" onClick={() => addProductIntoCart(product)}>
             <MdAddShoppingCart className="h-7 w-7" />
           </button>
         </div>
