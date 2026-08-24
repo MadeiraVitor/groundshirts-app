@@ -1,20 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { products } from "../../../mocks/products";
 import { formatCurrency } from "../../../utils/format-currency";
 import { MdOutlineShoppingBag } from "react-icons/md";
+import { CartContext } from "../../../contexts/CartContext";
 
 export const Route = createFileRoute("/_app/products/$productId")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { addProductIntoCart } = useContext(CartContext);
   const { productId } = Route.useParams();
   const [selectedSize, setSelectedSize] = useState("M");
 
   const filteredProduct = products.find(
     (product) => product.id === Number(productId),
   );
+
+  if (!filteredProduct) return;
 
   const originalPrice = filteredProduct?.price ?? 0;
   const discountPrice = originalPrice * 0.9;
@@ -119,7 +123,10 @@ function RouteComponent() {
             </form>
           </div>
           {/* <!-- Primary CTA --> */}
-          <button className="w-full bg-primary-container text-on-primary-container font-label-sm text-[12px] uppercase tracking-widest font-bold py-5 rounded hover:opacity-90 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+          <button
+            className="w-full bg-primary-container text-on-primary-container font-label-sm text-[12px] uppercase tracking-widest font-bold py-5 rounded hover:opacity-90 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+            onClick={() => addProductIntoCart(filteredProduct)}
+          >
             <span className="text-xl">
               <MdOutlineShoppingBag />
             </span>
