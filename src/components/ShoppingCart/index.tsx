@@ -12,10 +12,15 @@ export const ShoppingCart = () => {
   return (
     <>
       <button
-        className="cursor-pointer text-xl"
+        className="cursor-pointer text-xl relative"
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <MdOutlineShoppingBag />
+        {cart.length > 0 && (
+          <span className="absolute -top-1 -right-2 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+            {cart.length}
+          </span>
+        )}
       </button>
 
       <div
