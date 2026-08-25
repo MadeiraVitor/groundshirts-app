@@ -36,12 +36,12 @@ export const Header = () => {
           >
             LOJAS
           </Link>
-          <a
+          <Link
+            to="/about"
             className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:opacity-70 duration-300"
-            href="#"
           >
             SOBRE
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-6 text-primary">
