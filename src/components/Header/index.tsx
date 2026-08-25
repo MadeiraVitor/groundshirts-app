@@ -30,12 +30,12 @@ export const Header = () => {
           >
             INFANTIL
           </a>
-          <a
+          <Link
+            to="/our-stores"
             className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:opacity-70 duration-300"
-            href="#"
           >
             LOJAS
-          </a>
+          </Link>
           <a
             className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:opacity-70 duration-300"
             href="#"
