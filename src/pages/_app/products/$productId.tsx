@@ -4,6 +4,7 @@ import { products } from "../../../mocks/products";
 import { formatCurrency } from "../../../utils/format-currency";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { CartContext } from "../../../contexts/CartContext";
+import { CepForm } from "../../../components/CepForm";
 
 export const Route = createFileRoute("/_app/products/$productId")({
   component: RouteComponent,
@@ -111,16 +112,8 @@ function RouteComponent() {
             <label className="font-label-sm text-[12px] uppercase tracking-widest text-on-surface font-bold mb-3 block">
               Calcular o prazo de entrega
             </label>
-            <form className="flex gap-4">
-              <input
-                className="grow bg-surface-container-low border-0 border-b border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 font-body-md text-[16px] text-on-surface placeholder:text-on-surface-variant/50 transition-colors max-w-42.5"
-                placeholder="Insira seu CEP"
-                type="text"
-              />
-              <button className="bg-surface-container-highest text-on-surface font-label-sm text-[12px] uppercase tracking-widest px-6 py-3 rounded hover:bg-surface-dim transition-colors duration-300 cursor-pointer">
-                Calcular
-              </button>
-            </form>
+
+            <CepForm />
           </div>
           {/* <!-- Primary CTA --> */}
           <button
