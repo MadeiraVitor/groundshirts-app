@@ -16,7 +16,8 @@ export const products = [
         image: StreetOversizedBold,
         price: 135,
         color: 'Preto',
-        description: 'Camiseta oversized em algodão premium com caimento reto, ótimo conforto e respirabilidade. Ideal para o dia a dia, unindo atitude urbana e estilo moderno.'
+        description: 'Camiseta oversized em algodão premium com caimento reto, ótimo conforto e respirabilidade. Ideal para o dia a dia, unindo atitude urbana e estilo moderno.',
+        category: { id: 1, name: 'Masculino' }
     },
     {
         id: 2,
@@ -24,7 +25,8 @@ export const products = [
         image: StreetBasicEco,
         price: 110,
         color: 'Marrom',
-        description: 'Camiseta leve e confortável produzida com algodão orgânico. Possui maciez ao toque, respirabilidade e design versátil para compor qualquer look casual.'
+        description: 'Camiseta leve e confortável produzida com algodão orgânico. Possui maciez ao toque, respirabilidade e design versátil para compor qualquer look casual.',
+        category: { id: 2, name: 'Feminino' }
     },
     {
         id: 3,
@@ -32,7 +34,8 @@ export const products = [
         image: StreetFleece,
         price: 100,
         color: 'Bordô',
-        description: 'Camiseta em moletom macio que mantém o conforto térmico em dias mais frios. Estilosa, resistente e perfeita para um visual streetwear moderno.'
+        description: 'Camiseta em moletom macio que mantém o conforto térmico em dias mais frios. Estilosa, resistente e perfeita para um visual streetwear moderno.',
+        category: { id: 3, name: 'Infantil' }
     },
     {
         id: 4,
@@ -40,7 +43,8 @@ export const products = [
         image: StreetRegataSlip,
         price: 95,
         color: 'Cinza',
-        description: 'Modelo regata de fácil combinação, extremamente confortável. Ideal para quem busca praticidade, estilo discreto e liberdade de movimento.'
+        description: 'Modelo regata de fácil combinação, extremamente confortável. Ideal para quem busca praticidade, estilo discreto e liberdade de movimento.',
+        category: { id: 1, name: 'Masculino' }
     },
     {
         id: 5,
@@ -48,7 +52,8 @@ export const products = [
         image: StreetImpermeavelTech,
         price: 140,
         color: 'Preto',
-        description: 'Versão com tecido tecnológico hidrofugado, tratado para repelir umidade. Mantém o conforto e o estilo mesmo em dias chuvosos.'
+        description: 'Versão com tecido tecnológico hidrofugado, tratado para repelir umidade. Mantém o conforto e o estilo mesmo em dias chuvosos.',
+        category: { id: 4, name: 'Novidades' }
     },
     {
         id: 6,
@@ -56,7 +61,8 @@ export const products = [
         image: StreetPerformanceWaterproof,
         price: 150,
         color: 'Cinza',
-        description: 'Camiseta resistente à água, em tecido leve com ajuste confortável e respirável. Perfeita para quem busca proteção e estilo em qualquer clima.'
+        description: 'Camiseta resistente à água, em tecido leve com ajuste confortável e respirável. Perfeita para quem busca proteção e estilo em qualquer clima.',
+        category: { id: 5, name: 'Estampadas' }
     },
     {
         id: 7,
@@ -64,7 +70,8 @@ export const products = [
         image: StreetMangaLongaWaterproof,
         price: 160,
         color: 'Preto',
-        description: 'Modelo de manga longa impermeável e elegante. Oferece proteção extra, conforto térmico e visual arrojado para dias frios e úmidos.'
+        description: 'Modelo de manga longa impermeável e elegante. Oferece proteção extra, conforto térmico e visual arrojado para dias frios e úmidos.',
+        category: { id: 6, name: 'Basicas' }
     },
     {
         id: 8,
@@ -72,7 +79,8 @@ export const products = [
         image: StreetExplore,
         price: 130,
         color: 'Verde',
-        description: 'Camiseta robusta e moderna, feita para o cotidiano urbano e aventuras ao ar livre. Combina resistência, conforto e design em uma peça versátil.'
+        description: 'Camiseta robusta e moderna, feita para o cotidiano urbano e aventuras ao ar livre. Combina resistência, conforto e design em uma peça versátil.',
+        category: { id: 7, name: 'Oversized' }
     },
     {
         id: 9,
@@ -80,7 +88,8 @@ export const products = [
         image: StreetCroppedExplore,
         price: 140,
         color: 'Verde',
-        description: 'Camiseta cropped com acabamento resistente e estilo aventureiro. Proporciona conforto prolongado e um visual despojado em qualquer ocasião.'
+        description: 'Camiseta cropped com acabamento resistente e estilo aventureiro. Proporciona conforto prolongado e um visual despojado em qualquer ocasião.',
+        category: { id: 2, name: 'Feminino' }
     },
     {
         id: 10,
@@ -88,6 +97,7 @@ export const products = [
         image: StreetClassic,
         price: 100,
         color: 'Off White',
-        description: 'Clássica e elegante, a Classic é feita em materiais premium que garantem conforto e durabilidade. Uma escolha versátil para qualquer ocasião.'
+        description: 'Clássica e elegante, a Classic é feita em materiais premium que garantem conforto e durabilidade. Uma escolha versátil para qualquer ocasião.',
+        category: { id: 4, name: 'Novidades' }
     },
 ]
