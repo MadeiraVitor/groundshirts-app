@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import Banner from "../../assets/images/banner.png";
 
 export const Hero = () => {
@@ -20,9 +21,9 @@ export const Hero = () => {
           </h3>
 
           <div className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:gap-4">
-            <button className="w-full py-4 px-8 bg-transparent border border-white font-label-sm text-label-sm tracking-widest rounded-full hover:bg-white/10 transition-colors duration-300 ease-in-out backdrop-blur-sm cursor-pointer md:w-auto">
+            <Link className="w-full py-4 px-8 bg-transparent border border-white font-label-sm text-label-sm tracking-widest rounded-full hover:bg-white/10 transition-colors duration-300 ease-in-out backdrop-blur-sm cursor-pointer md:w-auto" to="/products">
               VER MODELOS
-            </button>
+            </Link>
             <button className="w-full bg-primary-container text-on-primary-container font-label-sm text-label-sm tracking-widest py-4 px-8 rounded-full hover:bg-primary hover:text-white transition-colors duration-300 ease-in-out cursor-pointer md:w-auto">
               COMPRAR
             </button>
