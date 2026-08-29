@@ -2,15 +2,17 @@ import camisaBranca from "../../assets/images/camisa-branca.jpg";
 import camisaPreta from "../../assets/images/camisa-preta.jpg";
 import camisaVerde from "../../assets/images/camisa-verde.jpg";
 import camisaCinza from "../../assets/images/camisa-cinza.jpg";
+import { Link } from "@tanstack/react-router";
 
 export const Categories = () => {
   return (
     <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter text-white">
         {/* <!-- Categoria 1 --> */}
-        <a
+        <Link
           className="group block relative h-96 rounded-xl overflow-hidden bg-surface-container-low cursor-pointer"
-          href="#"
+          to="/products/category/$category"
+          params={{ category: "novidades" }}
         >
           <img
             className="absolute inset-0 w-full h-full object-cover image-hover-zoom object-[center_top]"
@@ -23,11 +25,12 @@ export const Categories = () => {
               Novidades
             </button>
           </div>
-        </a>
+        </Link>
         {/* <!-- Categoria 2 --> */}
-        <a
+        <Link
           className="group block relative h-96 rounded-xl overflow-hidden bg-surface-container-low cursor-pointer"
-          href="#"
+          to="/products/category/$category"
+          params={{ category: "estampadas" }}
         >
           <img
             className="absolute inset-0 w-full h-full object-cover image-hover-zoom object-[center_top]"
@@ -40,11 +43,12 @@ export const Categories = () => {
               Estampadas
             </button>
           </div>
-        </a>
+        </Link>
         {/* <!-- Categoria 3 --> */}
-        <a
+        <Link
           className="group block relative h-96 rounded-xl overflow-hidden bg-surface-container-low cursor-pointer"
-          href="#"
+          to="/products/category/$category"
+          params={{ category: "basicas" }}
         >
           <img
             className="absolute inset-0 w-full h-full object-cover image-hover-zoom object-[center_top]"
@@ -57,11 +61,12 @@ export const Categories = () => {
               Basicas
             </button>
           </div>
-        </a>
+        </Link>
         {/* <!-- Categoria 4 --> */}
-        <a
+        <Link
           className="group block relative h-96 rounded-xl overflow-hidden bg-surface-container-low cursor-pointer"
-          href="#"
+          to="/products/category/$category"
+          params={{ category: "oversized" }}
         >
           <img
             className="absolute inset-0 w-full h-full object-cover image-hover-zoom object-[center_top]"
@@ -74,7 +79,7 @@ export const Categories = () => {
               Oversized
             </button>
           </div>
-        </a>
+        </Link>
       </div>
     </section>
   );
