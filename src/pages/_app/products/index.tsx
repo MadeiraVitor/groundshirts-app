@@ -30,7 +30,15 @@ function RouteComponent() {
         </div>
       </section>
 
-      <ProductList products={products} />
+      {products.length === 0 ? (
+        <div className="text-center">
+          <p className="font-body-md text-body-md font-bold text-on-surface/70 my-30">
+            Nenhum produto encontrado.
+          </p>
+        </div>
+      ) : (
+        <ProductList products={products} />
+      )}
     </div>
   );
 }
