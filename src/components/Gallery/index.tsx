@@ -2,6 +2,7 @@ import modelo from "../../assets/images/modelo.jpg";
 import camisaPreta from "../../assets/images/camisa-preta.jpg";
 import camisaBranca from "../../assets/images/camisa-branca.jpg";
 import { FiTruck } from "react-icons/fi";
+import { Link } from "@tanstack/react-router";
 
 export const Gallery = () => {
   return (
@@ -24,9 +25,9 @@ export const Gallery = () => {
                 Explore nossos lançamentos mais recentes, criados para as ruas.
               </p>
             </div>
-            <button className="bg-white text-black font-label-sm text-label-sm uppercase tracking-widest py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer">
+            <Link to="/products" className="bg-white text-black font-label-sm text-label-sm uppercase tracking-widest py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer">
               Ver Coleção
-            </button>
+            </Link>
           </div>
         </div>
         {/* <!-- Right Side --> */}
