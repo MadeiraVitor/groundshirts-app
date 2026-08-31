@@ -24,7 +24,7 @@ export const ShoppingCart = () => {
       </button>
 
       <div
-        className={`${cartIsOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0`}
+        className={`${cartIsOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0 transition-all duration-500 ease-in-out`}
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <div
