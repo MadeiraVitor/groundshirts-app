@@ -20,7 +20,7 @@ export const Hero = () => {
             premium
           </h3>
 
-          <div className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:gap-4">
+          <div className="flex text-center w-full flex-col gap-3 md:w-auto md:flex-row md:gap-4">
             <Link className="w-full py-4 px-8 bg-transparent border border-white font-label-sm text-label-sm tracking-widest rounded-full hover:bg-white/10 transition-colors duration-300 ease-in-out backdrop-blur-sm cursor-pointer md:w-auto" to="/products">
               VER MODELOS
             </Link>
