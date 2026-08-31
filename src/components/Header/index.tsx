@@ -52,11 +52,11 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-6 text-primary">
-          <button className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
+          <Link to="/signin" className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
             <span>
               <FaRegUser />
             </span>
-          </button>
+          </Link>
 
           <ShoppingCart />
         </div>
