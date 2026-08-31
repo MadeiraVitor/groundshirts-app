@@ -41,7 +41,7 @@ export const RegisterForm = () => {
             />
 
             {errors.name && (
-              <p className="text-xs text-red-600">{errors.name.message}</p>
+              <p className="text-xs text-error">{errors.name.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-2">
@@ -56,7 +56,7 @@ export const RegisterForm = () => {
             />
 
             {errors.email && (
-              <p className="text-xs text-red-600">{errors.email.message}</p>
+              <p className="text-xs text-error">{errors.email.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-2">
@@ -71,7 +71,7 @@ export const RegisterForm = () => {
             />
 
             {errors.password && (
-              <p className="text-xs text-red-600">{errors.password.message}</p>
+              <p className="text-xs text-error">{errors.password.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-2">
@@ -86,7 +86,7 @@ export const RegisterForm = () => {
             />
 
             {errors.confirmPassword && (
-              <p className="text-xs text-red-600">
+              <p className="text-xs text-error">
                 {errors.confirmPassword.message}
               </p>
             )}
