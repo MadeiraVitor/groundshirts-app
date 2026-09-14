@@ -58,7 +58,7 @@ export const ShoppingCart = () => {
                     <div className="flex space-x-4">
                       <div className="w-24 h-32 bg-surface-container-low rounded-lg overflow-hidden shrink-0">
                         <img
-                          src={product.image}
+                          src={product.images[0]}
                           alt={product.name}
                           className="w-full h-full object-cover"
                         />
@@ -76,7 +76,7 @@ export const ShoppingCart = () => {
                           </button>
                         </div>
                         <p className="font-body-md text-on-surface-variant mt-1">
-                          {product.color}
+                          {product.colors[0]}
                         </p>
                         <div className="mt-auto flex justify-between items-center">
                           <div className="flex items-center border border-outline-variant rounded-full px-3 py-1 space-x-4">
