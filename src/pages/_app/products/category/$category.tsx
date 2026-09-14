@@ -13,7 +13,7 @@ export const Route = createFileRoute("/_app/products/category/$category")({
   },
   component: RouteComponent,
   head: () => ({
-    meta: [{ title: "Produtos - SyntaxWear" }],
+    meta: [{ title: "Produtos - Groundshirts" }],
   }),
   notFoundComponent: () => (
     <section className="container pt-44 text-center text-black min-h-[80vh] flex flex-col items-center justify-center mx-auto">
@@ -48,7 +48,9 @@ function RouteComponent() {
     setLoading(true);
 
     try {
-      const filteredProducts = await getProductByCategoryId(category.id, {page});
+      const filteredProducts = await getProductByCategoryId(category.id, {
+        page,
+      });
 
       setProducts((prev) => [...prev, ...filteredProducts.data]);
 
@@ -87,16 +89,6 @@ function RouteComponent() {
         </div>
       </section>
 
-      {/* {filteredProducts.data.length === 0 ? (
-        <div className="text-center">
-          <p className="font-body-md text-body-md font-bold text-on-surface/70 my-30">
-            Nenhum produto encontrado para esta categoria.
-          </p>
-        </div>
-      ) : (
-        <ProductList products={filteredProducts} />
-      )} */}
-
       {loading && products.length === 0 ? (
         <div className="flex justify-center items-center min-h-100">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-container"></div>
@@ -106,10 +98,7 @@ function RouteComponent() {
           <p className="text-center font-body-md text-body-md font-bold text-on-surface/70 mt-30 mb-1.5">
             Nenhum produto encontrado para esta categoria.
           </p>
-          <Link
-            to="/products"
-            className="flex justify-center underline mb-30"
-          >
+          <Link to="/products" className="flex justify-center underline mb-30">
             Voltar para produtos
           </Link>
         </>
