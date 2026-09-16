@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { formatCurrency } from "../../utils/format-currency";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext/CartContext";
 
 export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
