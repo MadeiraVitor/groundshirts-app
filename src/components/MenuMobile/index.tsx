@@ -3,6 +3,8 @@ import { IoMdClose, IoMdMenu } from "react-icons/io";
 import type { NavLink } from "../Header";
 import { Link } from "@tanstack/react-router";
 import { FaRegUser } from "react-icons/fa";
+import { useAuth } from "../../contexts/AuthContext/AuthContext";
+import { PiSignOutLight } from "react-icons/pi";
 
 interface MenuMobileProps {
   navLinks: NavLink[];
@@ -10,6 +12,16 @@ interface MenuMobileProps {
 
 export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+
+  const { isAuthenticated, user, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
 
   return (
     <>
@@ -69,19 +81,35 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
               >
                 SOBRE
               </Link>
+
+              {isAuthenticated && (
+                <button
+                  onClick={handleSignOut}
+                  className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface hover:text-primary transition-colors py-2 border-b border-transparent hover:border-primary w-fit cursor-pointer"
+                >
+                  SAIR
+                  <PiSignOutLight className="inline ml-2" />
+                </button>
+              )}
             </ul>
 
             {/* <!-- Footer --> */}
             <footer className="px-margin-mobile pb-12 pt-6 border-t border-outline-variant/30">
-              <Link
-                to="/signin"
-                className="flex items-center justify-center gap-4 py-4 px-6 bg-primary text-on-primary rounded-DEFAULT hover:opacity-90 active:scale-95 transition-all"
-              >
-                <FaRegUser />
-                <span className="font-label-sm text-label-sm uppercase tracking-widest font-bold">
-                  Fazer login
-                </span>
-              </Link>
+              <button className="flex items-center justify-center gap-4 py-3 px-6 bg-primary text-on-primary w-full">
+                {isAuthenticated ? (
+                  <span>Olá, {user?.fullName}</span>
+                ) : (
+                  <Link
+                    to="/signin"
+                    className="flex items-center justify-center gap-4 py-3 px-6 bg-primary text-on-primary hover:opacity-90 transition-all w-full"
+                  >
+                    <FaRegUser />
+                    <span className="font-label-sm text-label-sm uppercase tracking-widest font-bold">
+                      Fazer login
+                    </span>
+                  </Link>
+                )}
+              </button>
             </footer>
           </div>
         </div>
