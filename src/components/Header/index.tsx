@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { FaRegUser } from "react-icons/fa";
 import { ShoppingCart } from "../ShoppingCart";
 import { MenuMobile } from "../MenuMobile";
+import { useAuth } from "../../contexts/AuthContext/AuthContext";
+import { PiSignOutLight } from "react-icons/pi";
 
 export interface NavLink {
   name: string;
@@ -15,6 +17,16 @@ const navLinks: NavLink[] = [
 ];
 
 export const Header = () => {
+  const { isAuthenticated, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
+
   return (
     <header className="fixed top-0 w-full z-50 bg-white border-b border-outline-variant/30 shadow-sm">
       <div className="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -52,11 +64,21 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-6 text-primary">
-          <Link to="/signin" className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
-            <span>
-              <FaRegUser />
-            </span>
-          </Link>
+          <button className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
+            {isAuthenticated ? (
+              <button
+                onClick={handleSignOut}
+                className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:opacity-70 duration-300 cursor-pointer"
+              >
+                SAIR
+                <PiSignOutLight className="inline ml-2" />
+              </button>
+            ) : (
+              <Link to="/signin">
+                <FaRegUser />
+              </Link>
+            )}
+          </button>
 
           <ShoppingCart />
         </div>
