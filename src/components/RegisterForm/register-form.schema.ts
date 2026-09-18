@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export const registerUserFormSchema = z
   .object({
-    name: z.string().nonempty("Campo obrigatório!"),
+    fullName: z.string().nonempty("Campo obrigatório!"),
     email: z.email("E-mail inválido!"),
     password: z
       .string()
