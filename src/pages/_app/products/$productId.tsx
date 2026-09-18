@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { products } from "../../../mocks/products";
 import { formatCurrency } from "../../../utils/format-currency";
 import { MdOutlineShoppingBag } from "react-icons/md";
-import { CartContext } from "../../../contexts/CartContext";
+import { CartContext } from "../../../contexts/CartContext/CartContext";
 import { CepForm } from "../../../components/CepForm";
 
 export const Route = createFileRoute("/_app/products/$productId")({
