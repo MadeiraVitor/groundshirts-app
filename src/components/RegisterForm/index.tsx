@@ -1,10 +1,37 @@
-import { useRegisterForm } from "./register-form.schema";
+import { useRegisterForm, type RegisterFormData } from "./register-form.schema";
 import { FaArrowRightLong } from "react-icons/fa6";
 import authBackground from "../../assets/images/auth-background.jpg";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useAuth } from "../../contexts/AuthContext/AuthContext";
+import { useState } from "react";
 
 export const RegisterForm = () => {
-  const { register, errors, isSubmitting } = useRegisterForm();
+  const [error, setError] = useState<string | null>(null);
+
+  const { register, errors, isSubmitting, handleSubmit } = useRegisterForm();
+
+  const { signUp } = useAuth();
+
+  const navigate = useNavigate();
+
+  async function handleRegisterUser(data: RegisterFormData) {
+    const { confirmPassword, ...dataWithoutConfirmPassword } = data;
+
+    setError(null);
+
+    try {
+      await signUp(dataWithoutConfirmPassword);
+      navigate({ to: "/" });
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Erro ao registrar usuário:", error.message);
+        setError(error.message);
+      } else {
+        console.error("Erro ao registrar usuário");
+        setError("Erro ao registrar usuário.");
+      }
+    }
+  }
 
   return (
     <section className="min-h-screen relative flex items-center justify-center p-4">
@@ -16,7 +43,7 @@ export const RegisterForm = () => {
         />
         <div className="absolute inset-0 bg-background/50 backdrop-blur-sm"></div>
       </div>
-    
+
       <main className="relative z-10 w-full max-w-115 bg-surface-container-lowest/85 backdrop-blur-2xl border border-outline-variant/30 rounded-xl shadow-lg p-8 md:p-12 flex flex-col gap-8">
         <header className="text-center flex flex-col gap-2">
           <Link to="/">
@@ -28,7 +55,10 @@ export const RegisterForm = () => {
             Junte-se a nossa comunidade.
           </p>
         </header>
-        <form className="flex flex-col gap-6">
+        <form
+          className="flex flex-col gap-6"
+          onSubmit={handleSubmit(handleRegisterUser)}
+        >
           <div className="flex flex-col gap-2">
             <label className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">
               Nome Completo
@@ -36,12 +66,12 @@ export const RegisterForm = () => {
             <input
               className="w-full bg-surface-container-low/50 border-0 border-b border-outline-variant/50 focus:border-primary focus:ring-0 px-4 py-3 font-body-md text-on-surface transition-colors placeholder:text-on-surface-variant/50"
               type="text"
-              {...register("name")}
+              {...register("fullName")}
               placeholder="Digite seu nome completo"
             />
 
-            {errors.name && (
-              <p className="text-xs text-error">{errors.name.message}</p>
+            {errors.fullName && (
+              <p className="text-xs text-error">{errors.fullName.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-2">
@@ -108,6 +138,10 @@ export const RegisterForm = () => {
               </>
             )}
           </button>
+
+          {error && (
+            <span className="text-error text-[12px] mb-2 block">{error}</span>
+          )}
         </form>
         <div className="pt-5 text-center border-t border-outline-variant/30">
           <p className="font-body-md text-body-md text-on-surface-variant">
