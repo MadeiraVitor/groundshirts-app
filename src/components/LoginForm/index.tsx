@@ -17,7 +17,7 @@ export const LoginForm = () => {
 
   const signInFormSchema = z.object({
     email: z.email("E-mail inválido"),
-    password: z.string().min(6, "A senha deve conter no mínimo 6 caracteres"),
+    password: z.string().min(8, "A senha deve conter no mínimo 8 caracteres"),
   });
 
   type SignInFormData = z.infer<typeof signInFormSchema>;
@@ -28,6 +28,7 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<SignInFormData>({
     resolver: zodResolver(signInFormSchema),
+    mode: "onBlur",
   });
 
   const onSubmit = async (data: SignInFormData) => {
@@ -115,12 +116,6 @@ export const LoginForm = () => {
                 )}
               </div>
               <div className="pt-4">
-                {error && (
-                  <span className="text-error text-[12px] mb-2 block">
-                    {error}
-                  </span>
-                )}
-
                 <button
                   className="w-full bg-primary-container text-on-primary py-4 px-8 font-label-sm text-label-sm uppercase tracking-widest hover:opacity-90 transition-opacity duration-300 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   type="submit"
@@ -137,6 +132,12 @@ export const LoginForm = () => {
                     </>
                   )}
                 </button>
+
+                {error && (
+                  <span className="text-error text-[12px] mt-2 block">
+                    {error}
+                  </span>
+                )}
               </div>
             </form>
             <div className="mt-7 pt-5 text-center border-t border-outline-variant/30">
