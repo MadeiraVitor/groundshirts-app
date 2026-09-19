@@ -40,7 +40,7 @@ A aplicação permite que o usuário explore produtos, visualize detalhes, calcu
 <br>
 
 🚀 Deploy do projeto:
-<a href="https://groundshirts-app.vercel.app/" target="_blank">Deploy</a>
+<a href="https://groundshirts-app-vitor-madeiras-projects.vercel.app/" target="_blank">Deploy</a>
 
 ---
 
