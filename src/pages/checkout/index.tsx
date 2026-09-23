@@ -11,6 +11,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type Resolver } from "react-hook-form";
 import type { Address } from "../../interfaces/address";
 import { formatCurrency } from "../../utils/format-currency";
+import { CartContext } from "../../contexts/CartContext/CartContext";
+import { AuthContext } from "../../contexts/AuthContext/AuthContext";
+import { loadStripe } from "@stripe/stripe-js";
 
 const shippingAddressFormSchema = z.object({
   street: z.string().nonempty("A rua é obrigatória."),
@@ -36,6 +39,39 @@ const FRETE_POR_REGIAO: Record<string, number> = {
   Sudeste: 14.9,
   Sul: 19.9,
 };
+
+interface OrderItem {
+  productId: number;
+  quantity: number;
+  size?: string;
+}
+
+async function createStripeCheckout(
+  items: OrderItem[],
+  shippingAddress: ShippingAddressFormData,
+  shippingCost: number,
+  paymentMethod: string,
+  userId: number,
+) {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/stripe/checkout`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items,
+        shippingAddress,
+        shippingCost,
+        paymentMethod,
+        userId,
+      }),
+    },
+  );
+
+  return await response.json();
+}
 
 export const Route = createFileRoute("/checkout/")({
   component: CheckoutPage,
@@ -66,6 +102,9 @@ function CheckoutPage() {
 
   const [address, setAddress] = useState<Address | null>(null);
 
+  const { cart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+
   const cepValue = watch("cep");
 
   useEffect(() => {
@@ -89,6 +128,34 @@ function CheckoutPage() {
 
     fetchData();
   }, [cepValue]);
+
+  const redirectToCheckout = async () => {
+    if (!address) return;
+
+    const shippingData = getValues();
+
+    const paymentMethod = "credit_card";
+
+    const items = cart.map((item) => ({
+      productId: item.id,
+      quantity: item.quantity,
+      size: item.sizes[0],
+    }));
+
+    const { sessionId } = await createStripeCheckout(
+      items,
+      shippingData,
+      address?.shippingCost,
+      paymentMethod,
+      user?.id!,
+    );
+
+    if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) return;
+
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
+    stripe?.redirectToCheckout({ sessionId });
+  };
 
   return (
     <div>
@@ -399,7 +466,7 @@ function CheckoutPage() {
               <button
                 type="button"
                 className="w-full rounded-lg bg-primary-container py-3 text-base leading-6 text-white shadow-[0_2px_4px_-2px_rgba(0,0,0,0.1),0_4px_6px_-1px_rgba(0,0,0,0.1)] cursor-pointer"
-                // onClick={redirectToCheckout}
+                onClick={redirectToCheckout}
                 disabled={!address}
               >
                 Fechar pedido
