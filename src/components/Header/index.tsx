@@ -64,7 +64,7 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-6 text-primary">
-          <button className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
+          <div className="hover:opacity-70 transition-opacity duration-300 active:scale-95 cursor-pointer hidden lg:flex">
             {isAuthenticated ? (
               <button
                 onClick={handleSignOut}
@@ -78,7 +78,7 @@ export const Header = () => {
                 <FaRegUser />
               </Link>
             )}
-          </button>
+          </div>
 
           <ShoppingCart />
         </div>
