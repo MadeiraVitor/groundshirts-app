@@ -2,7 +2,7 @@
     GroundShirts – E-commerce de Camisetas
 </h1>
 
-Aplicação de uma loja virtual de camisetas (GROUNDSHIRTS) desenvolvida com foco em navegação moderna, experiência de compra e organização de componentes reutilizáveis, incluindo catálogo de produtos, filtro por categoria, detalhe de produto, carrinho lateral com persistência de dados e páginas institucionais.
+Aplicação de uma loja virtual de camisetas (GROUNDSHIRTS) desenvolvida com foco em navegação moderna, experiência de compra e organização de componentes reutilizáveis, incluindo catálogo de produtos, filtro por categoria, detalhe de produto, carrinho lateral com persistência de dados, páginas institucionais e integração com método de pagamento stripe para processamento seguro de transações.
 
 ---
 
@@ -53,6 +53,7 @@ A aplicação permite que o usuário explore produtos, visualize detalhes, calcu
 - Context API
 - React Hook Form 7.85.0
 - Zod 4.4.3
+- Stripe 5.7.0
 - React Icons 5.7.0
 - Vite 8.2.0
 
@@ -65,6 +66,8 @@ A aplicação permite que o usuário explore produtos, visualize detalhes, calcu
 - Filtro de produtos por categoria via rota dinâmica (Masculino, Feminino, Infantil, Novidades, Estampadas, Básicas, Oversized)
 - Página de detalhes do produto com descrição, preço e cor
 - Cálculo de frete por CEP com integração da API ViaCEP, com valores de frete por região (Norte, Nordeste, Centro-Oeste, Sudeste, Sul)
+- Checkout integrado ao Stripe para pagamentos com cartão de crédito
+- Criação de sessão de checkout no backend e redirecionamento para o Checkout hospedado pelo Stripe
 - Adição de produtos ao carrinho com validação
 - Incremento/decremento de quantidade no carrinho
 - Remoção de itens do carrinho
@@ -99,6 +102,17 @@ npm run dev
 O projeto estará disponível em:
 http://localhost:5173
 
+### Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias para o checkout e para as requisições à API:
+
+```env
+VITE_API_URL=http://localhost:3000
+VITE_STRIPE_PUBLIC_KEY=pk_test_...
+```
+
+O checkout envia os itens do carrinho, o endereço de entrega, o valor do frete e o método `credit_card` para `POST /stripe/checkout`. A API deve retornar um `sessionId` válido do Stripe para que o front-end redirecione o cliente ao pagamento. O endpoint `/orders` também é usado para listar os pedidos da conta.
+
 ## 📚 Aprendizados
 
 Durante o desenvolvimento deste projeto, foi possível praticar:
@@ -108,6 +122,7 @@ Durante o desenvolvimento deste projeto, foi possível praticar:
 - Persistência de dados com Local Storage mantendo sincronização automática
 - Criação de componentes reutilizáveis, tipados e escaláveis
 - Renderização dinâmica de catálogos e páginas de detalhe de produto
+- Integração com Stripe e criação de sessões de pagamento no checkout
 - Validação robusta e assertiva de formulários com Zod e React Hook Form
 - Consumo de API externa (ViaCEP) com tratamento de erros e feedback ao usuário
 - Implementação de carrinho de compras com operações de CRUD
